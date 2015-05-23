@@ -1,11 +1,12 @@
 log "OpsWorks Windows Application Sample"
 
-windows_feature "IIS-WebServerRole" do
-  action :install
+powershell_script 'Install IIS' do
+  code 'Add-WindowsFeature Web-Server'
+  not_if "(Get-WindowsFeature -Name Web-Server).Installed"
 end
 
-file "c:/inetpub/wwwroot/iisstart.htm" do
-  action :delete
+service 'w3svc' do
+  action [:start, :enable]
 end
 
 
