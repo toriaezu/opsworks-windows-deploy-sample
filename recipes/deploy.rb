@@ -4,3 +4,11 @@ git app[:attributes][:document_root] do
   repository app[:app_source][:url] 
   action :sync
 end
+
+dsc_resource "Test DSC" do
+  resource :file
+  property :ensure, "Present"
+  property :type, "Directory"
+  property :destinationpath, "c:/test"
+  action :set
+end
