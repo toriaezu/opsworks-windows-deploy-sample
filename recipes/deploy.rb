@@ -9,6 +9,6 @@ dsc_resource "Test DSC" do
   resource :file
   property :ensure, "Present"
   property :type, "Directory"
-  property :destinationpath, "c:/test"
+  property :destinationpath, "c:/sometest"
   action :set
 end
