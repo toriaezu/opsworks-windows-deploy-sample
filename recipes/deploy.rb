@@ -10,5 +10,4 @@ dsc_resource "Test DSC" do
   property :ensure, "Present"
   property :type, "Directory"
   property :destinationpath, "c:/sometest"
-  action :set
 end
