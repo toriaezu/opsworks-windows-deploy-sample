@@ -5,9 +5,16 @@ git app[:attributes][:document_root] do
   action :sync
 end
 
-dsc_resource "Test DSC" do
-  resource :file
-  property :ensure, "Present"
-  property :type, "Directory"
-  property :destinationpath, "c:/sometest"
+powershell_script "Directory" do
+  code <<-EOH
+    Configuration OutputDirectory {
+      File "App Directory" {
+        Ensure = "Present"
+        Type = "Directory"
+        DestinationPath = "c:/sometest"
+      }
+    }
+    OutputDirectory -Force -OutputPath $env:TEMP
+    Start-DscConfiguration -Path OutputDirectory -Wait -Force -Verbose
+  EOH
 end
