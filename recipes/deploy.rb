@@ -7,14 +7,14 @@ end
 
 powershell_script "Directory" do
   code <<-EOH
-    Configuration OutputDirectory {
+    Configuration AppDirectory {
       File "App Directory" {
         Ensure = "Present"
         Type = "Directory"
         DestinationPath = "c:/sometest"
       }
     }
-    OutputDirectory -Force -OutputPath $env:TEMP
-    Start-DscConfiguration -Path OutputDirectory -Wait -Force -Verbose
+    AppDirectory -Force -OutputPath "$env:TEMP/AppDirectory"
+    Start-DscConfiguration -Path "$env:TEMP/AppDirectory" -Wait -Force -Verbose
   EOH
 end
