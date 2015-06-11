@@ -1,4 +1,4 @@
-log "OpsWorks Windows Application Sample"
+log "OpsWorks Windows Application Sample with nasty node #{node["KK÷BB"]}"
 
 powershell_script 'Install IIS' do
   code 'Add-WindowsFeature Web-Server'
